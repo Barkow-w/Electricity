@@ -76,8 +76,8 @@
         @media (max-width: 767px) {
           max-width: 300px;
           max-height: 169px;
-          background-size: 360px;
-          background-position: -32px -25px;
+          background-size: 353px;
+          background-position: -27px -22px
         }
       }
     }

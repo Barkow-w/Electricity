@@ -181,12 +181,22 @@
       }
 
       &__icons {
-        display: flex;
+        display: none;
         gap: 12px;
         margin-top: 12px;
 
         &__item {
           cursor: pointer;
+        }
+
+        @media (max-width: 767px) {
+          display: flex;
+          height: 30px;
+
+          svg {
+            width: 30px;
+            height: 30px;
+          }
         }
       }
 
