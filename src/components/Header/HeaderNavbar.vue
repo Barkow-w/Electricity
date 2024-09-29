@@ -2,10 +2,18 @@
 import {ref} from "vue";
 
 const openMenu = ref('')
+const scrollContainer = ref(null);
 function scrollRight() {
   const container = document.getElementById('scrollContainer');
   container.scrollBy({left: 100, behavior: 'smooth'});
 }
+
+const handleWheel = (event) => {
+  event.preventDefault();
+  if (scrollContainer.value) {
+    scrollContainer.value.scrollLeft += event.deltaY;
+  }
+};
 
 </script>
 
@@ -156,7 +164,7 @@ function scrollRight() {
 
           Акции
         </div>
-        <div class="header__bottom__navbar__block" id="scrollContainer">
+        <div class="header__bottom__navbar__block" ref="scrollContainer" @wheel="handleWheel">
           <div class="header__bottom__navbar__block__list">
             <div class="header__bottom__navbar__block__list__item">Смартфоны</div>
             <div class="header__bottom__navbar__block__list__item">Ноутбуки</div>
@@ -591,12 +599,15 @@ function scrollRight() {
       }
 
       &__block {
-        overflow-x: scroll;
+        overflow-x: auto;
+        overflow-y: hidden;
         white-space: nowrap;
+        scroll-behavior: smooth;
         transition: ease-in-out 1s;
 
         &__list {
           position: relative;
+          display: inline-block;
           max-width: 1031px;
 
 
